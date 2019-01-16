@@ -21,10 +21,12 @@ func _ready():
 func _physics_process(delta):
 	if get_colliding_bodies().size() > 0:
 		for i in get_colliding_bodies():
-			if i.get_parent().name == "World":
-				get_node("/root/Game/Globals").score += 1
-				i.get_parent().remove_child(i)
-				get_parent().remove_child(self)
+			if i.get_parent() != null:
+				if i.get_parent().name == "World":
+					if Globals.mode == 0:
+						Globals.score += 1
+					i.get_parent().remove_child(i)
+					get_parent().remove_child(self)
 
 func _process(delta):
 	timer -= delta

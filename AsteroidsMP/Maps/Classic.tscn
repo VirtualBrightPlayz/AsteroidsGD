@@ -1,0 +1,227 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/MapRoot.gd" type="Script" id=1]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/Score.gd" type="Script" id=3]
+[ext_resource path="res://scripts/MapWall.gd" type="Script" id=4]
+[ext_resource path="res://scripts/rndSpawn.gd" type="Script" id=5]
+[ext_resource path="res://textures/sky.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 10
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 512, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 300 )
+
+[node name="Classic" type="Node2D"]
+
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 80.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "Score: 0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 3 )
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Static" type="Node2D" parent="." index="1"]
+
+editor/display_folded = true
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Static" index="0"]
+
+editor/display_folded = true
+position = Vector2( 512, 610 )
+input_pickable = false
+collision_layer = 3
+collision_mask = 3
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 1.0
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+sizex = 10
+sizey = 10
+cankill = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/StaticBody2D4" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Static" index="1"]
+
+editor/display_folded = true
+position = Vector2( 512, -10 )
+input_pickable = false
+collision_layer = 3
+collision_mask = 3
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 1.0
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+sizex = 10
+sizey = 10
+cankill = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/StaticBody2D3" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Static" index="2"]
+
+editor/display_folded = true
+position = Vector2( 1034, 300 )
+input_pickable = false
+collision_layer = 3
+collision_mask = 3
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 1.0
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+sizex = 10
+sizey = 10
+cankill = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/StaticBody2D2" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Static" index="3"]
+
+editor/display_folded = true
+position = Vector2( -10, 300 )
+input_pickable = false
+collision_layer = 3
+collision_mask = 3
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 1.0
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+sizex = 10
+sizey = 10
+cankill = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/StaticBody2D" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="World" type="Node2D" parent="." index="2"]
+
+script = ExtResource( 5 )
+
+[node name="Spawnpoint" type="Position2D" parent="." index="3"]
+
+position = Vector2( 512, 300 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AsteroidSpawn" type="Position2D" parent="." index="4"]
+
+position = Vector2( 194.533, 127.875 )
+
+[node name="AsteroidSpawn2" type="Position2D" parent="." index="5"]
+
+position = Vector2( 821.662, 145.559 )
+
+[node name="AsteroidSpawn3" type="Position2D" parent="." index="6"]
+
+position = Vector2( 507.417, 463.886 )
+
+[node name="AsteroidSpawn4" type="Position2D" parent="." index="7"]
+
+position = Vector2( 613.526, 285.677 )
+
+[node name="AsteroidSpawn5" type="Position2D" parent="." index="8"]
+
+position = Vector2( 303.362, 280.236 )
+
+[node name="AsteroidSpawn6" type="Position2D" parent="." index="9"]
+
+position = Vector2( 146.92, 477.489 )
+
+[node name="AsteroidSpawn7" type="Position2D" parent="." index="10"]
+
+position = Vector2( 125.154, 58.4959 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="11"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0.27451 )
+motion_scale = Vector2( 0.1, 0.1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 600 )
+_sections_unfolded = [ "Motion", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+stretch_mode = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+

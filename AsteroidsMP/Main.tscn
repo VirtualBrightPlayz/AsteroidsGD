@@ -1,163 +1,214 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/Score.gd" type="Script" id=2]
-[ext_resource path="res://scripts/rndSpawn.gd" type="Script" id=3]
-[ext_resource path="res://Globals.gd" type="Script" id=4]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/PlayButton.gd" type="Script" id=2]
+[ext_resource path="res://scripts/MainMenuText.gd" type="Script" id=3]
+[ext_resource path="res://scripts/MapList.gd" type="Script" id=4]
+[ext_resource path="res://scripts/ModeList.gd" type="Script" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="DynamicFont" id=1]
 
-custom_solver_bias = 0.0
-extents = Vector2( 512, 10 )
+size = 20
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="InputEventKey" id=2]
 
-custom_solver_bias = 0.0
-extents = Vector2( 10, 300 )
+device = 0
+alt = false
+shift = false
+control = false
+meta = false
+command = false
+pressed = false
+scancode = 80
+unicode = 0
+echo = false
 
-[node name="Game" type="Node2D" index="0"]
+[sub_resource type="ShortCut" id=3]
 
-[node name="KinematicBody2D" parent="." index="0" instance=ExtResource( 1 )]
+shortcut = SubResource( 2 )
 
-position = Vector2( 532, 171 )
+[sub_resource type="DynamicFont" id=4]
 
-[node name="Label" type="Label" parent="." index="1"]
+size = 10
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 15
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=6]
+
+size = 10
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Main" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Play" type="Button" parent="." index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
 anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -46.0
+margin_right = 46.0
+margin_bottom = 26.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 2
+focus_mode = 2
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = SubResource( 3 )
+group = null
+text = "PLAY"
+flat = false
+align = 1
 script = ExtResource( 2 )
+_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Copyright" type="Label" parent="." index="2"]
+[node name="Legal" type="RichTextLabel" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 486.0
-margin_right = 124.0
-margin_bottom = 500.0
+margin_top = -100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = false
+bbcode_text = "Copyright 2019 Brian Zulch
+I do not own Asteroids by Atari Inc. (there is good reason as to why this is free) I do not collect any information from this program.
+--GODOT ENGINE--
+Copyright (c) 2007-2019 Juan Linietsky, Ariel Manzur.
+Copyright (c) 2014-2019 Godot Engine contributors (cf. AUTHORS.md)
+--https://github.com/godotengine/godot/blob/master/LICENSE.txt--
+--PRESS START 2P FONT--
+Copyright 2012 The Press Start 2P Project Authors (cody@zone38.net), with Reserved Font Name \"Press Start 2P\".
+--This Font Software is licensed under the SIL Open Font License, Version 1.1. http://scripts.sil.org/OFL--"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Copyright 2019 Brian Zulch
+I do not own Asteroids by Atari Inc. (there is good reason as to why this is free) I do not collect any information from this program.
+--GODOT ENGINE--
+Copyright (c) 2007-2019 Juan Linietsky, Ariel Manzur.
+Copyright (c) 2014-2019 Godot Engine contributors (cf. AUTHORS.md)
+--https://github.com/godotengine/godot/blob/master/LICENSE.txt--
+--PRESS START 2P FONT--
+Copyright 2012 The Press Start 2P Project Authors (cody@zone38.net), with Reserved Font Name \"Press Start 2P\".
+--This Font Software is licensed under the SIL Open Font License, Version 1.1. http://scripts.sil.org/OFL--"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Margin", "custom_fonts" ]
+
+[node name="Label" type="Label" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "https://github.com/godotengine/godot/blob/master/LICENSE.txt"
+custom_fonts/font = SubResource( 5 )
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[node name="Disclaimer" type="Label" parent="." index="3"]
-
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 516.0
-margin_right = 124.0
-margin_bottom = 530.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "I do not own Asteroids by Atari Inc. (there is good reason as to why this is free) I do not collect any information from this program."
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Border" type="Node2D" parent="." index="4"]
-
-editor/display_folded = true
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="Border" index="0"]
-
-editor/display_folded = true
-position = Vector2( 512, 610 )
-input_pickable = false
-collision_layer = 3
-collision_mask = 3
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 1.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D4" index="0"]
-
-shape = SubResource( 1 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Border" index="1"]
-
-editor/display_folded = true
-position = Vector2( 512, -10 )
-input_pickable = false
-collision_layer = 3
-collision_mask = 3
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 1.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D3" index="0"]
-
-shape = SubResource( 1 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Border" index="2"]
-
-editor/display_folded = true
-position = Vector2( 1034, 300 )
-input_pickable = false
-collision_layer = 3
-collision_mask = 3
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 1.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D2" index="0"]
-
-shape = SubResource( 2 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Border" index="3"]
-
-editor/display_folded = true
-position = Vector2( -10, 300 )
-input_pickable = false
-collision_layer = 3
-collision_mask = 3
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 1.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D" index="0"]
-
-shape = SubResource( 2 )
-
-[node name="World" type="Node2D" parent="." index="5"]
-
 script = ExtResource( 3 )
+_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Globals" type="Node" parent="." index="6"]
+[node name="MapList" type="ItemList" parent="." index="3"]
 
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -100.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 6 )
+items = [  ]
+select_mode = 0
+allow_reselect = true
+icon_mode = 1
+fixed_icon_size = Vector2( 0, 0 )
 script = ExtResource( 4 )
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="ModeList" type="ItemList" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_top = -100.0
+margin_right = 200.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 6 )
+items = [  ]
+select_mode = 0
+allow_reselect = true
+icon_mode = 1
+fixed_icon_size = Vector2( 0, 0 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "custom_fonts" ]
 
 
