@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/MapRoot.gd" type="Script" id=1]
 [ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
@@ -24,6 +24,12 @@ extents = Vector2( 512, 10 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 300 )
+
+[sub_resource type="NavigationPolygon" id=4]
+
+vertices = PoolVector2Array( 1010, 10, 1010, 590, 10, 590, 10, 10 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 10, 10, 10, 590, 1010, 590, 1010, 10 ) ]
 
 [node name="Classic" type="Node2D"]
 
@@ -62,8 +68,8 @@ editor/display_folded = true
 editor/display_folded = true
 position = Vector2( 512, 610 )
 input_pickable = false
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -83,8 +89,8 @@ shape = SubResource( 2 )
 editor/display_folded = true
 position = Vector2( 512, -10 )
 input_pickable = false
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -104,8 +110,8 @@ shape = SubResource( 2 )
 editor/display_folded = true
 position = Vector2( 1034, 300 )
 input_pickable = false
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -125,8 +131,8 @@ shape = SubResource( 3 )
 editor/display_folded = true
 position = Vector2( -10, 300 )
 input_pickable = false
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -145,40 +151,47 @@ shape = SubResource( 3 )
 
 script = ExtResource( 5 )
 
-[node name="Spawnpoint" type="Position2D" parent="." index="3"]
+[node name="Nav" type="Navigation2D" parent="." index="3"]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Nav" index="0"]
+
+navpoly = SubResource( 4 )
+enabled = true
+
+[node name="Spawnpoint" type="Position2D" parent="." index="4"]
 
 position = Vector2( 512, 300 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="AsteroidSpawn" type="Position2D" parent="." index="4"]
+[node name="AsteroidSpawn" type="Position2D" parent="." index="5"]
 
 position = Vector2( 194.533, 127.875 )
 
-[node name="AsteroidSpawn2" type="Position2D" parent="." index="5"]
+[node name="AsteroidSpawn2" type="Position2D" parent="." index="6"]
 
 position = Vector2( 821.662, 145.559 )
 
-[node name="AsteroidSpawn3" type="Position2D" parent="." index="6"]
+[node name="AsteroidSpawn3" type="Position2D" parent="." index="7"]
 
 position = Vector2( 507.417, 463.886 )
 
-[node name="AsteroidSpawn4" type="Position2D" parent="." index="7"]
+[node name="AsteroidSpawn4" type="Position2D" parent="." index="8"]
 
 position = Vector2( 613.526, 285.677 )
 
-[node name="AsteroidSpawn5" type="Position2D" parent="." index="8"]
+[node name="AsteroidSpawn5" type="Position2D" parent="." index="9"]
 
 position = Vector2( 303.362, 280.236 )
 
-[node name="AsteroidSpawn6" type="Position2D" parent="." index="9"]
+[node name="AsteroidSpawn6" type="Position2D" parent="." index="10"]
 
 position = Vector2( 146.92, 477.489 )
 
-[node name="AsteroidSpawn7" type="Position2D" parent="." index="10"]
+[node name="AsteroidSpawn7" type="Position2D" parent="." index="11"]
 
 position = Vector2( 125.154, 58.4959 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="11"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="12"]
 
 layer = -1
 offset = Vector2( 0, 0 )

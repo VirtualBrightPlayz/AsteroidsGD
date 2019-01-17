@@ -22,9 +22,16 @@ func _physics_process(delta):
 	if get_colliding_bodies().size() > 0:
 		for i in get_colliding_bodies():
 			if i.get_parent() != null:
-				if i.get_parent().name == "World":
+				if i.name == "Player":
+					i.hit()
+				elif i.get_parent().name == "World":
 					if Globals.mode == 0:
 						Globals.score += 1
+					i.get_parent().remove_child(i)
+					get_parent().remove_child(self)
+				elif i.get_parent().name == "Nav":
+					if Globals.mode == 0:
+						Globals.score += 3
 					i.get_parent().remove_child(i)
 					get_parent().remove_child(self)
 

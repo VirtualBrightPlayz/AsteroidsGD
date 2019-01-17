@@ -44,17 +44,19 @@ func _physics_process(delta):
 	if timer2 < 0:
 		timer2 = 2
 		timer1_2 = 0
-	vel = lerp(vel, 0, 0.01)
-	velocity = velocity.linear_interpolate(Vector2(), 0.01)
-	rvel = lerp(rvel, 0, 0.01)
+	vel = lerp(vel, 0, 0.7 * delta)
+	velocity = velocity.linear_interpolate(Vector2(), 0.7 * delta)
+	rvel = lerp(rvel, 0, 0.7 * delta)
 	if Input.is_action_pressed("up"):
 		vel += 5
 	if Input.is_action_pressed("down"):
 		vel -= 5
 	if Input.is_action_pressed("left"):
-		rvel -= 0.2
+		rotate(-5 * delta)
+		#rvel -= 0.2
 	if Input.is_action_pressed("right"):
-		rvel += 0.2
+		rotate(5 * delta)
+		#rvel += 0.2
 	if Input.is_action_pressed("shoot") and timer <= 0:
 		timer = 0.3
 		timer1_2 += 1
@@ -78,41 +80,28 @@ func _physics_process(delta):
 	if is_on_wall():
 		if get_slide_collision(get_slide_count() - 1).collider.get_parent().name == "World":
 			if get_slide_collision(get_slide_count() - 1).collider.timer <= 0:
-				#get_node("/root/Game/Globals").score = 0
-				if Globals.mode == 0:
-					if Globals.score > Globals.highscore:
-						Globals.highscore = Globals.score
-					get_tree().change_scene("res://Main.tscn")
-				if Globals.mode == 1:
-					if lives <= 1:
-						get_tree().change_scene("res://Main.tscn")
-					else:
-						lives -= 1
-						var node = get_parent().spawns[randi() % get_parent().spawns.size()]
-						position = node.position
-						rotation = node.rotation
-						vel = 0
-						velocity = Vector2()
-						rvel = 0
-				print("ded")
+				hit()
 		if get_slide_collision(get_slide_count() - 1).collider.get_parent().name == "Static":
 			if get_slide_collision(get_slide_count() - 1).collider.cankill:
-				#get_node("/root/Game/Globals").score = 0
-				if Globals.mode == 0:
-					if Globals.score > Globals.highscore:
-						Globals.highscore = Globals.score
-					get_tree().change_scene("res://Main.tscn")
-				if Globals.mode == 1:
-					if lives <= 1:
-						get_tree().change_scene("res://Main.tscn")
-					else:
-						lives -= 1
-						var node = get_parent().spawns[randi() % get_parent().spawns.size()]
-						position = node.position
-						rotation = node.rotation
-						vel = 0
-						velocity = Vector2()
-						rvel = 0
-				print("ded")
+				hit()
 		vel *= -0.5
 		rvel *= -1
+		
+func hit():
+	#get_node("/root/Game/Globals").score = 0
+	if Globals.mode == 0:
+		if Globals.score > Globals.highscore:
+			Globals.highscore = Globals.score
+		get_tree().change_scene("res://Main.tscn")
+	if Globals.mode == 1:
+		if lives <= 1:
+			get_tree().change_scene("res://Main.tscn")
+		else:
+			lives -= 1
+			var node = get_parent().spawns[randi() % get_parent().spawns.size()]
+			position = node.position
+			rotation = node.rotation
+			vel = 0
+			velocity = Vector2()
+			rvel = 0
+	print("ded")

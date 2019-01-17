@@ -1,6 +1,7 @@
 extends Node2D
 
 var astrd = preload("res://Asteroid.tscn")
+var ai = preload("res://AI.tscn")
 var timer = 15
 var counter = 5
 
@@ -35,8 +36,14 @@ func _process(delta):
 
 func spawn():
 	var node = spawns[randi() % spawns.size()]
-	var inst = astrd.instance()
-	inst.position = node.position
-	inst.linear_velocity = Vector2(randi() % 150 - 75, randi() % 150 - 75)
-	inst.rotation = node.rotation
-	self.add_child(inst)
+	if randi() % 10 == 5 and Globals.ufo:
+		var inst = ai.instance()
+		inst.position = node.position
+		inst.rotation = node.rotation
+		get_node("../Nav").add_child(inst)
+	else:
+		var inst = astrd.instance()
+		inst.position = node.position
+		inst.linear_velocity = Vector2(randi() % 150 - 75, randi() % 150 - 75)
+		inst.rotation = node.rotation
+		self.add_child(inst)
