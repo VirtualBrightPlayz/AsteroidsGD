@@ -1,8 +1,8 @@
 extends CheckBox
 
 func _ready():
-	pressed = Globals.ufo
+	pressed = Globals.touch
 	connect("toggled", self, "toggle")
 
 func toggle(press):
-	Globals.ufo = press
+	Globals.touch = press

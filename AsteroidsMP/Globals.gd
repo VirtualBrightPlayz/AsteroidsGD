@@ -5,6 +5,7 @@ var highscore = 0
 var map = "res://Maps/Classic.tscn"
 var mode = 0
 var ufo = true
+var touch = false
 
 func _ready():
 	#seed(OS.get_datetime())

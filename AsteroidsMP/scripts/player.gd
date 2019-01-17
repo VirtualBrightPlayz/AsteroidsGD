@@ -13,6 +13,12 @@ var timer2 = 2
 var timer1_2 = 0
 var lives = 3
 
+var up = false
+var down = false
+var left = false
+var right = false
+var shoot = false
+
 func _ready():
 	var size = 20
 	points_test = PoolVector2Array()
@@ -47,17 +53,17 @@ func _physics_process(delta):
 	vel = lerp(vel, 0, 0.7 * delta)
 	velocity = velocity.linear_interpolate(Vector2(), 0.7 * delta)
 	rvel = lerp(rvel, 0, 0.7 * delta)
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("up") or up:
 		vel += 5
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("down") or down:
 		vel -= 5
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") or left:
 		rotate(-5 * delta)
 		#rvel -= 0.2
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") or right:
 		rotate(5 * delta)
 		#rvel += 0.2
-	if Input.is_action_pressed("shoot") and timer <= 0:
+	if (Input.is_action_pressed("shoot") or shoot) and timer <= 0:
 		timer = 0.3
 		timer1_2 += 1
 		if timer1_2 >= 5:
